@@ -15,7 +15,7 @@ class WeeklyVisitChart extends ApexChartWidget
      *
      * @var string
      */
-    protected static string $chartId = 'weeklyVisitChart';
+    protected static ?string $chartId = 'weeklyVisitChart';
 
     /**
      * Widget Title

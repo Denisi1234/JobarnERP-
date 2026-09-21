@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+@import "govuk-frontend/dist/govuk/govuk-frontend.min.css";
+@import "carbon-components/css/carbon-components.min.css";
+@import "antd/dist/reset.css";
+@import "antd/dist/antd.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { overflow-y: auto !important; height: auto !important; }
+  body { margin: 0; padding: 0; overflow-y: auto !important; height: auto !important; overscroll-behavior: auto; }
+  main { overflow: visible !important; height: auto !important; }
+  #main-content { overflow: visible !important; height: auto !important; }
+  .sales-portal, .reception-portal, .govuk-width-container, .govuk-main-wrapper { overflow: visible !important; height: auto !important; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #b1b4b6; }
+  ::-webkit-scrollbar-track { background: #f3f2f1; }
+}
+
+/* GOV.UK — Professional clean — grid is real, not scroll */
+.govuk-grid-row { display: flex !important; flex-wrap: wrap !important; margin-left: -15px !important; margin-right: -15px !important; gap: 0 !important; }
+.govuk-grid-column-one-quarter, .govuk-grid-column-one-third, .govuk-grid-column-two-thirds, .govuk-grid-column-one-half, .govuk-grid-column-full { padding: 0 15px !important; box-sizing: border-box !important; }
+.govuk-grid-column-one-quarter { width: 25% !important; }
+.govuk-grid-column-one-third { width: 33.3333% !important; }
+.govuk-grid-column-two-thirds { width: 66.6666% !important; }
+.govuk-grid-column-one-half { width: 50% !important; }
+.govuk-grid-column-full { width: 100% !important; }
+@media (max-width: 1020px) { .govuk-grid-column-one-quarter { width: 50% !important; } }
+@media (max-width: 640px) {
+  .govuk-grid-column-one-quarter, .govuk-grid-column-one-third, .govuk-grid-column-two-thirds, .govuk-grid-column-one-half { width: 100% !important; }
+  .govuk-table thead { display: none !important; }
+  .govuk-table tbody tr { display: block !important; border: 1px solid #b1b4b6 !important; margin-bottom: 15px !important; background: #fff !important; }
+  .govuk-table tbody td, .govuk-table tbody th[scope="row"] { display: block !important; padding: 10px 15px !important; border: none !important; border-bottom: 1px solid #f3f2f1 !important; text-align: left !important; }
+  .govuk-table tbody td::before, .govuk-table tbody th::before { content: attr(data-label); font-weight: 700; display: block; color: #505a5f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .govuk-table tbody td:last-child, .govuk-table tbody th:last-child { border-bottom: none !important; }
+}
+/* Professional clean — subtle hover, focus, typography */
+.govuk-summary-card { transition: border-color 0.15s; }
+.govuk-summary-card:hover { border-color: #505a5f !important; }
+.govuk-summary-card__title { font-family: "GDS Transport", Arial, sans-serif !important; letter-spacing: -0.01em; }
+.govuk-body, .govuk-body-s, .govuk-body-l { font-family: "GDS Transport", Arial, sans-serif !important; line-height: 1.5; }
+.govuk-tag { font-family: "GDS Transport", Arial, sans-serif !important; letter-spacing: 0.02em; }
+.govuk-button { font-family: "GDS Transport", Arial, sans-serif !important; }
+/* GOV.UK + USWDS — Documentation says all cards are rectangle */
+.govuk-summary-card,
+.govuk-summary-card__title-wrapper,
+.govuk-summary-card__content,
+.usa-card__container,
+.reception-card,
+.sales-card,
+.reception-portal *,
+.sales-portal * {
+  border-radius: 0 !important;
+}
+.govuk-tag,
+.usa-tag {
+  border-radius: 0 !important;
+}
+.govuk-button,
+.usa-button {
+  border-radius: 0 !important;
+}
+
+/* Executive Front Desk — Material 3 professional */
+@layer components {
+  .font-tabular { font-variant-numeric: tabular-nums; }
+}

@@ -30,13 +30,11 @@ class AdminDashboardAccess
             return redirect()->route('filament.app.auth.login')->with('error', 'Sorry, you are forbidden to access this page');
         }
 
-        $user = auth()->user();
-
-        if(!$user->admin()){
-            return redirect()->route('filament.app.pages.dashboard');
+        // Admin panel — allow is_admin, others routed to their portal
+        if (Auth::guard('web')->check() && Auth::user()?->is_admin) {
+            return $next($request);
         }
-
-       return $next($request);
+        return redirect('/');
 
     }
    

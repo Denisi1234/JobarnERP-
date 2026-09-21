@@ -68,4 +68,12 @@ class Department extends Model
     {
         return $this->hasMany(Department::class, 'parent_id');
     }
+
+    /**
+     * Get the tasks belonging to the department.
+     */
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

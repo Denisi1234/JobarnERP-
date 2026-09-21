@@ -23,11 +23,16 @@ class Employee extends Model
         'designation_id', 
     ];
 
-    protected $appends = ['full_name'];
+    protected $appends = ['full_name', 'name'];
 
     public function getFullNameAttribute () 
     {
-        return $this->first_name.' '.$this->last_name;  
+        return trim($this->first_name . ' ' . $this->last_name);  
+    }
+
+    public function getNameAttribute () 
+    {
+        return $this->full_name;  
     }
     /**
      * > This function returns the designation of the user

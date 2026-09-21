@@ -25,7 +25,8 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        'is_admin'
+        'is_admin',
+        'role'
     ];
 
     /**
@@ -50,7 +51,33 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        $role = $this->role ?? 'reception';
+        $id = $panel->getId();
+        // Admin panel — only is_admin users (system admin) can access /admin
+        if ($id === 'admin') return $this->is_admin == true;
+        // App panel (path '') is unified login - allow all authenticated
+        if ($id === 'app') return true;
+        // Role-isolated panels
+        return match ($id) {
+            'admin' => $this->is_admin == true,
+            'reception' => $role === 'reception',
+            'it' => $role === 'it',
+            'sales' => $role === 'sales',
+            'manager' => $role === 'manager',
+            default => true,
+        };
+    }
+
+    public function getRoleLabel(): string
+    {
+        return match ($this->role ?? 'reception') {
+            'reception' => 'Reception',
+            'it' => 'IT Support',
+            'sales' => 'Sales',
+            'manager' => 'Manager',
+            'admin' => 'Admin',
+            default => ucfirst($this->role ?? 'reception'),
+        };
     }
 
     public function admin(): bool
